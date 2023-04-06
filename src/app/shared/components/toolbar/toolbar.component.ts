@@ -1,5 +1,5 @@
 import { MatDrawer } from '@angular/material/sidenav';
-import { Component, Input,Inject } from '@angular/core';
+import { Component, Input,Inject, Output, EventEmitter } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -10,14 +10,14 @@ import { DOCUMENT } from '@angular/common';
 export class ToolbarComponent {
 
   @Input() drawer?: MatDrawer;
+  @Input() iconoGirado: boolean = true;
+  @Output() girarIcono = new EventEmitter<boolean>();
   isLigthModeActive = true;
-  iconoGirado = true;
-
   constructor(@Inject(DOCUMENT) private document:Document) { }
 
   toggleIcono() {
     this.iconoGirado = !this.iconoGirado;
-    console.log('this.iconoGirado::: ', this.iconoGirado);
+    this.girarIcono.emit(this.iconoGirado);
   }
   onChangeTheme():void {
     this.isLigthModeActive = !this.isLigthModeActive;
