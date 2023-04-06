@@ -1,1 +1,33 @@
-<p>dashboard works!</p>
+<mat-drawer-container class="example-container" autosize>
+
+
+  <mat-drawer-container class="example-container" autosize>
+    <!-- Barrar Desplegable -->
+    <mat-drawer #drawer class="example-sidenav bg-secondary" mode="side" >
+      <p>Auto-resizing sidenav</p>
+      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+      <button (click)="showFiller = !showFiller" mat-raised-button>
+        Toggle extra text
+      </button>
+    </mat-drawer>
+
+    <!-- Contenido -->
+    <div class="example-sidenav-content">
+
+      <app-toolbar [drawer]="drawer"></app-toolbar>
+
+      <!-- Renderizado de las rutas -->
+      <main>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus unde ut
+          error quibusdam sint, voluptatibus nam harum quod fugit beatae
+          necessitatibus illum assumenda natus provident, laboriosam nisi, eaque
+          neque dolores?
+        </p>
+
+      </main>
+    </div>
+    </mat-drawer-container>
+
+
+

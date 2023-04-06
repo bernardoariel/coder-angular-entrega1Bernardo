@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-
+  @ViewChild('drawer', { static: false }) drawer!: MatDrawer;
+  showFiller = false;
 }

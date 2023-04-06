@@ -12,4 +12,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
   1. La Carpeta de Modulos contendra los distintos componentes separados en submodulos
   2. La Carpeta Shared tendra todo lo que se comparta en la carpeta anterior y proximamente tambien de la carpeta Views cuando implementemos las rutas.
 3. Creacion de todos los modulos que vamos a usar 
+4. Instalacion de Angular Material 
+5. Importando el Toolbar en dashboard 
+6. Utilizando ViewChild para invocar un toogle sobre #drawer
+ 
 
