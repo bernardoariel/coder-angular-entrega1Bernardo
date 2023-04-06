@@ -1,4 +1,4 @@
-# PFBernardo
+# 1PFBernardo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
 
@@ -14,6 +14,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 3. Creacion de todos los modulos que vamos a usar 
 4. Instalacion de Angular Material 
 5. Importando el Toolbar en dashboard 
-6. Utilizando ViewChild para invocar un toogle sobre #drawer
- 
+6. Utilizando ViewChild para invocar un toogle sobre #drawer Recibiendo el Valor por un Input
+
+
 

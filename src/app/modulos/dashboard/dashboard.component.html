@@ -1,18 +1,36 @@
-<mat-drawer-container class="example-container" autosize>
+<mat-sidenav-container fullscreen>
+  <!-- Barrar Desplegable -->
+  <mat-sidenav #drawer class="example-sidenav" mode="push" >
 
+    <mat-toolbar>
 
-  <mat-drawer-container class="example-container" autosize>
-    <!-- Barrar Desplegable -->
-    <mat-drawer #drawer class="example-sidenav bg-secondary" mode="side" >
-      <p>Auto-resizing sidenav</p>
-      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-      <button (click)="showFiller = !showFiller" mat-raised-button>
-        Toggle extra text
+      <span>Menu</span>
+      <span class="spacer"></span>
+
+      <button mat-icon-button (click)="drawer!.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
       </button>
-    </mat-drawer>
+
+    </mat-toolbar>
+
+
+
+    <mat-nav-list>
+      <a (click)="drawer!.toggle()" mat-list-item>
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span>Listado de Clientes</span>
+      </a>
+      <a (click)="drawer!.toggle()" mat-list-item>
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span>Listado de Clientes</span>
+      </a>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
 
     <!-- Contenido -->
-    <div class="example-sidenav-content">
+
 
       <app-toolbar [drawer]="drawer"></app-toolbar>
 
@@ -26,8 +44,8 @@
         </p>
 
       </main>
-    </div>
-    </mat-drawer-container>
+
+    </mat-sidenav-container>
 
 
 

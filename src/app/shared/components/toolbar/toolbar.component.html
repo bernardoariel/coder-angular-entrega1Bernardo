@@ -1,26 +1,32 @@
 <mat-toolbar color="primary">
-  <button
-    mat-icon-button (click)="drawer!.toggle()"
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-  >
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
 
+  <button mat-icon-button (click)="drawer!.toggle();toggleIcono()" class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon [ngClass]="{'icono-girado': !iconoGirado}">menu</mat-icon>
+  </button>
+
+  <span>SysEstudent</span>
+
+  <span class="spacer"></span>
+
+    <!-- boton de setting -->
+    <button mat-icon-button [matMenuTriggerFor]="menu" title="Ingresá a la configuracion" >
+      <mat-icon>settings</mat-icon>
+    </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item title="Editar mi Perfil">
+      <mat-icon>admin_panel_settings</mat-icon>
+      <span>Editar Perfil</span>
+    </button>
+    <button mat-menu-item title="Cambia los colores de preferencia de tu sistema" (click)="onChangeTheme()">
+      <mat-icon>format_paint</mat-icon>
+      <span>Editar Preferencias</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item title="Salir del sistema">
+      <mat-icon>logout</mat-icon>
+      <span>Salir</span>
+    </button>
+  </mat-menu>
+
+</mat-toolbar>
