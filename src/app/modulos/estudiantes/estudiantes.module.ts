@@ -1,21 +1,27 @@
+import { MaterialModule } from './../../shared/material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListadoComponent } from './listado/listado.component';
+
 import { EstudianteComponent } from './estudiante/estudiante.component';
+import { ListComponent } from './list/list.component';
+import { GridComponent } from './grid/grid.component';
 
 
 
 @NgModule({
   declarations: [
-    ListadoComponent,
-    EstudianteComponent
+    EstudianteComponent,
+    ListComponent,
+    GridComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   exports:[
-    ListadoComponent,
-    EstudianteComponent
+    EstudianteComponent,
+    GridComponent,
+    ListComponent
   ]
 })
 export class EstudiantesModule { }

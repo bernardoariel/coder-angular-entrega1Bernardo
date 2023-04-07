@@ -14,8 +14,6 @@
 
     </mat-toolbar>
 
-
-
     <mat-nav-list>
       <a (click)="cerrarMenu()" mat-list-item>
         <mat-icon mat-list-icon>home</mat-icon>
@@ -30,23 +28,17 @@
   </mat-sidenav>
 
 
-    <!-- Contenido -->
+  <app-toolbar [drawer]="drawer" (girarIcono)="iconoGirado = $event"></app-toolbar>
 
+    <!-- Renderizado de las rutas -->
+    <main class="container">
 
-      <app-toolbar [drawer]="drawer" (girarIcono)="iconoGirado = $event"></app-toolbar>
+      <app-list [estudiantes]="estudiantes"></app-list>
+      <app-grid [estudiantes]="estudiantes"></app-grid>
 
-      <!-- Renderizado de las rutas -->
-      <main>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus unde ut
-          error quibusdam sint, voluptatibus nam harum quod fugit beatae
-          necessitatibus illum assumenda natus provident, laboriosam nisi, eaque
-          neque dolores?
-        </p>
+    </main>
 
-      </main>
-
-    </mat-sidenav-container>
+</mat-sidenav-container>
 
 
 

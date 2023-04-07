@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { EstudiantesModule } from '../estudiantes/estudiantes.module';
 
 
 
@@ -13,7 +14,8 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
   imports: [
     CommonModule,
     MaterialModule,
-    ComponentsModule
+    ComponentsModule,
+    EstudiantesModule
   ],
   exports:[
     DashboardComponent
