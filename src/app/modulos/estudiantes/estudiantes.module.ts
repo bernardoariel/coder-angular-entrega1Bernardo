@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { EstudianteComponent } from './estudiante/estudiante.component';
 import { ListComponent } from './list/list.component';
 import { GridComponent } from './grid/grid.component';
+import { LayoutComponent } from './layout/layout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,16 +14,16 @@ import { GridComponent } from './grid/grid.component';
   declarations: [
     EstudianteComponent,
     ListComponent,
-    GridComponent
+    GridComponent,
+    LayoutComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   exports:[
-    EstudianteComponent,
-    GridComponent,
-    ListComponent
+    LayoutComponent
   ]
 })
 export class EstudiantesModule { }

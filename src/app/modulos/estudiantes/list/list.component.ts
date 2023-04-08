@@ -11,7 +11,7 @@ export class ListComponent implements OnInit{
 
   @Input() estudiantes!: Estudiantes[];
 
-  displayedColumns: string[] = ['nombre', 'apellido', 'fechaNacimiento', 'matricula', 'matricula','fotoPerfilUrl'];
+  displayedColumns: string[] = ['nombre', 'apellido', 'fechaNacimiento',  'matricula','fotoPerfilUrl', 'acciones'];
   dataSource: Estudiantes[] = [];
 
   ngOnInit() {

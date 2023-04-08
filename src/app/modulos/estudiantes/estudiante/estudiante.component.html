@@ -1,1 +1,39 @@
-<p>estudiante works!</p>
+<h1 mat-dialog-title>ABM Estudiante</h1>
+<div mat-dialog-content class="p-3">
+
+  <form [formGroup]="estudianteForm">
+    <div class="row">
+      <div class="col-12 mb-1">
+
+        <mat-form-field class="w-100">
+          <mat-label>Nombre</mat-label>
+          <input
+            [formControl]="nombreControl"
+            matInput
+            type="text">
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-12 mb-1">
+        <mat-form-field class="w-100">
+          <mat-label>Apellido</mat-label>
+          <input
+           [formControl]="apellidoControl"
+            matInput
+            type="text">
+        </mat-form-field>
+
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+<div mat-dialog-actions>
+
+  <button mat-button> Cancelar </button>
+  <button mat-button (click)="guardar()"> Guardar </button>
+
+</div>
