@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Estudiantes } from '../../estudiantes';
+import { Estudiante } from '../../estudiante';
 
 @Component({
   selector: 'app-grid',
@@ -7,5 +7,5 @@ import { Estudiantes } from '../../estudiantes';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent {
-  @Input() estudiantes!: Estudiantes[];
+  @Input() estudiantes!: Estudiante[];
 }

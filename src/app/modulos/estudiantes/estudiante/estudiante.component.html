@@ -27,8 +27,8 @@
       </div>
       <div class="col-12 mb-1">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Seleccione una Fecha</mat-label>
-          <input matInput [matDatepicker]="picker" [formControl]="fechaNacimientoControl" [max]="fechaActual">
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input matInput [matDatepicker]="picker" [formControl]="fechaNacimientoControl">
           <mat-hint>DD/MM/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>

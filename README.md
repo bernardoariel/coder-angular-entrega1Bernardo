@@ -18,5 +18,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 7. Otro ViewChild para acceder a una propiedad del tipo boolean y darle movimiento desde adentro y desde afuera para el icono de menu
 8. Capturando el evento del backdrop del menu,  cuando se abre el menu lateral, al tocar en cualquier lugar de la pantalla se volvia y el icono quedaba a 90 grados 
 9. Dos Formas de mostrar una lista de estudiantes, con Tabla y con card
+10. Agregando el Dialog de Estudiante con sus respectivos campos
+11. Agregando DataPicker con su formato de argentina DD/MM/YYYY
 
 

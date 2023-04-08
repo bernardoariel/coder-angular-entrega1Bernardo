@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Estudiantes } from '../../estudiantes';
+import { Estudiante } from '../../estudiante';
 import { MatDialog } from '@angular/material/dialog';
 import { EstudianteComponent } from '../estudiante/estudiante.component';
 
@@ -11,7 +11,7 @@ import { EstudianteComponent } from '../estudiante/estudiante.component';
 export class LayoutComponent {
 
   constructor( private matDialog:MatDialog) { }
-  estudiantes:Estudiantes[] =  [
+  estudiantes:Estudiante[] =  [
     {
       nombre: "Lucía",
       apellido: "González",
@@ -58,7 +58,7 @@ export class LayoutComponent {
       nombre: "Luis",
       apellido: "Ramírez",
       fechaNacimiento: "2001-12-05",
-      matricula: "020",
+      matricula: "006",
       fotoPerfilUrl: "https://randomuser.me/api/portraits/med/men/6.jpg",
       fotoUrl: "https://randomuser.me/api/portraits/men/3.jpg"
     }
@@ -71,7 +71,21 @@ export class LayoutComponent {
     });
 
     dialog.afterClosed().subscribe((valor)=>{
-      // this.estudiantes.push(valor)
+      // contar los estudiantes y sumar 1
+      // al resultado agregarle los 0 necesarios para llegar a 3 digitos
+      // 1 -> 001
+      const totalAlumnos = this.estudiantes.length + 1
+      const matricula = totalAlumnos.toString().padStart(3, '0');
+      const estudianteNuevo:Estudiante = {
+        ...valor,
+        matricula,
+        fotoPerfilUrl:`https://randomuser.me/api/portraits/med/men/${totalAlumnos}.jpg`,
+        fotoUrl: `https://randomuser.me/api/portraits/men/${totalAlumnos}.jpg`,
+      }
+      console.log('valor::: ', estudianteNuevo);
+      this.estudiantes.push(estudianteNuevo)
+      console.log('this.estudiantes::: ', this.estudiantes);
+
     })
 
   }

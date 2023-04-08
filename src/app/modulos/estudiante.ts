@@ -1,4 +1,4 @@
-export interface Estudiantes {
+export interface Estudiante {
   nombre: string;
   apellido: string;
   fechaNacimiento: string;
