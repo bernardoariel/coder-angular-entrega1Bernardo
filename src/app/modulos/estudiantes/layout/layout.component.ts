@@ -71,7 +71,7 @@ export class LayoutComponent {
     });
 
     dialog.afterClosed().subscribe((valor)=>{
-      this.estudiantes.push(valor)
+      // this.estudiantes.push(valor)
     })
 
   }
