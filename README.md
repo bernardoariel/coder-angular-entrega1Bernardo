@@ -20,5 +20,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 9. Dos Formas de mostrar una lista de estudiantes, con Tabla y con card
 10. Agregando el Dialog de Estudiante con sus respectivos campos
 11. Agregando DataPicker con su formato de argentina DD/MM/YYYY
+12. Agregando un Servicio para la comunicacion entre componentes hermanos
 
 

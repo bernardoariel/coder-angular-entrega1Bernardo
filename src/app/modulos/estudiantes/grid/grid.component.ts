@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Estudiante } from '../../estudiante';
+import { Estudiante } from '../estudiante';
 
 @Component({
   selector: 'app-grid',

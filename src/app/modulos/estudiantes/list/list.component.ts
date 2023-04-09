@@ -1,5 +1,8 @@
-import { Component, Input,  OnInit } from '@angular/core';
-import { Estudiante } from '../../estudiante';
+import {  Component,  EventEmitter,  Input,  OnInit, Output} from '@angular/core';
+import { Estudiante } from '../estudiante';
+import { EstudianteService } from '../estudiante.service';
+import { Observable } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-list',
@@ -8,13 +11,20 @@ import { Estudiante } from '../../estudiante';
 })
 export class ListComponent implements OnInit{
 
-  @Input() estudiantes!: Estudiante[];
+  estudiantes: Estudiante[] = [];
 
   displayedColumns: string[] = ['nombre', 'apellido', 'fechaNacimiento',  'matricula','fotoPerfilUrl', 'acciones'];
   dataSource: Estudiante[] = [];
 
   ngOnInit() {
-    this.dataSource = this.estudiantes.slice();
+    this.cargarEstudiantes();
   }
+  constructor(private estudianteService: EstudianteService) { }
 
+
+
+  cargarEstudiantes(){
+    this.estudiantes = this.estudianteService.getEstudiantes()
+    this.dataSource = this.estudiantes
+  }
 }
