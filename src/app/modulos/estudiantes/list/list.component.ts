@@ -10,21 +10,24 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit{
-
+  @Input()
   estudiantes: Estudiante[] = [];
 
-  displayedColumns: string[] = ['nombre', 'apellido', 'fechaNacimiento',  'matricula','fotoPerfilUrl', 'acciones'];
+  displayedColumns: string[] = ['nombreCompleto', 'fechaNacimiento',  'matricula','fotoPerfilUrl', 'acciones'];
   dataSource: Estudiante[] = [];
 
   ngOnInit() {
     this.cargarEstudiantes();
+
   }
   constructor(private estudianteService: EstudianteService) { }
 
 
 
   cargarEstudiantes(){
-    this.estudiantes = this.estudianteService.getEstudiantes()
-    this.dataSource = this.estudiantes
+    // this.estudiantes = this.estudianteService.getEstudiantes()
+    // this.dataSource = []
+    console.log('this.estudiantes::: list', this.estudiantes);
+    this.dataSource = [...this.estudiantes]
   }
 }

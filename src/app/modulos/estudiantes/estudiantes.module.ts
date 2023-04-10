@@ -1,3 +1,4 @@
+import { PipesModule } from './../../shared/pipes/pipes.module';
 import { MaterialModule } from './../../shared/material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
   ],
   exports:[
     LayoutComponent
