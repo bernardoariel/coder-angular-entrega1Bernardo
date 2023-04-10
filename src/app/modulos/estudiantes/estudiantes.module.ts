@@ -1,8 +1,8 @@
 import { PipesModule } from './../../shared/pipes/pipes.module';
 import { MaterialModule } from './../../shared/material/material.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { CommonModule, DatePipe } from '@angular/common';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { EstudianteComponent } from './estudiante/estudiante.component';
 import { ListComponent } from './list/list.component';
 import { GridComponent } from './grid/grid.component';
@@ -26,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   exports:[
     LayoutComponent
-  ]
+  ],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-AR' },DatePipe ],
 })
 export class EstudiantesModule { }

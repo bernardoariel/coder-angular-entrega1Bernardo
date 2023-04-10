@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EstudianteComponent } from '../estudiante/estudiante.component';
 import { EstudianteService } from '../estudiante.service';
 import { ListComponent } from '../list/list.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-layout',
@@ -66,7 +67,7 @@ export class LayoutComponent {
     fotoUrl: "https://randomuser.me/api/portraits/men/3.jpg"
   }
 ];
-  constructor( private matDialog:MatDialog,private estudianteService: EstudianteService) { }
+  constructor( private matDialog:MatDialog,private estudianteService: EstudianteService,private datePipe: DatePipe) { }
 
 
   abrirAbmEstudiante(){
@@ -77,10 +78,13 @@ export class LayoutComponent {
 
     dialog.afterClosed().subscribe((valor)=>{
       console.log('valor::: ', valor);
+      if(!valor) return
+
       const totalAlumnos = this.estudiantes.length + 1
       const matricula = totalAlumnos.toString().padStart(3, '0');
       const estudianteNuevo:Estudiante = {
         ...valor,
+        fechaNacimiento: this.datePipe.transform(valor.fechaNacimiento, 'yyyy-MM-dd'),
         matricula,
         fotoPerfilUrl:`https://randomuser.me/api/portraits/med/men/${totalAlumnos}.jpg`,
         fotoUrl: `https://randomuser.me/api/portraits/men/${totalAlumnos}.jpg`,

@@ -1,19 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-estudiante',
   templateUrl: './estudiante.component.html',
   styleUrls: ['./estudiante.component.scss']
 })
 export class EstudianteComponent {
-  fechaActual:Date = new Date();
-  nombreControl = new FormControl('', [Validators.required, Validators.minLength(3)])
-  apellidoControl = new FormControl('', [Validators.required, Validators.minLength(3)])
+
+  formatDate = formatDate;
+  fechaActual: Date = new Date();
+
+  nombreControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(20),
+    Validators.pattern(/^[^0-9]+$/)
+  ])
+
+  apellidoControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(20),
+    Validators.pattern(/^[^0-9]+$/)
+  ])
   fechaNacimientoControl = new FormControl('', [
     Validators.required,
-    Validators.max(this.fechaActual.getTime()),
+    // Validators.pattern(/^([0-2]\d|3[0-1])\/(0\d|1[0-2])\/\d{4}$/)
   ]);
 
   constructor(private dialogRef:MatDialogRef<EstudianteComponent>){}
@@ -24,21 +38,27 @@ export class EstudianteComponent {
     fechaNacimiento: this.fechaNacimientoControl
   })
 
-  formatDate(date: Date): string {
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear().toString();
-    return `${month}/${day}/${year}`;
-  }
+  myFilter = (d: Date | null): boolean => {
+    const today = new Date();
+    const cutoffDate = new Date("1940-01-01");
+
+    if (!d) {
+      // Si la fecha es nula, retornar falso para no permitir su selección
+      return false;
+    }
+
+    // Retornar falso si la fecha es mayor a la actual o menor a la fecha límite (1940)
+    return d <= today && d >= cutoffDate;
+  };
+
 
   guardar(){
     if(this.estudianteForm.valid){
-      console.log('this.estudianteForm.value::: ', this.estudianteForm.value);
+      // console.log('this.estudianteForm.value::: ', this.estudianteForm.value);
       this.dialogRef.close(this.estudianteForm.value)
     }else{
       // mostrar errores de validacion en consola
       console.log('this.estudianteForm.errors::: ', this.estudianteForm.errors);
-
     }
   }
 }
