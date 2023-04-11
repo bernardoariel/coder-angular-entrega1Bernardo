@@ -66,10 +66,11 @@ import { ConfirmComponent } from 'src/app/modulos/estudiantes/componentes/confir
             // Update de estudiante en el arreglo de estudiantes
             this.estudiantes.unshift(estudiante);
 
-
             // Emitir evento de estudiantes actualizados
-
-            this.estudiantesActualizados.emit(this.estudiantes);
+            this.dataSource = [...this.estudiantes]
+            this.dataSource = this.estudiantes.slice()
+            this.dataSource = this.estudiantes
+            // this.estudiantesActualizados.emit(this.estudiantes);
           }
 
         }
