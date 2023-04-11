@@ -9,6 +9,8 @@ import { GridComponent } from './grid/grid.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
+import { DialogModule } from '@angular/cdk/dialog';
+import { ConfirmComponent } from './componentes/confirm/confirm.component';
 
 
 
@@ -17,14 +19,17 @@ import { DirectivesModule } from 'src/app/shared/directives/directives.module';
     EstudianteComponent,
     ListComponent,
     GridComponent,
-    LayoutComponent
+    LayoutComponent,
+    ConfirmComponent
+
   ],
   imports: [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
     PipesModule,
-    DirectivesModule
+    DirectivesModule,
+    DialogModule
   ],
   exports:[
     LayoutComponent

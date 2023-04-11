@@ -43,7 +43,7 @@
         <mat-icon>visibility</mat-icon>
         Ver
       </button>
-      <button mat-button color="warn"  (click)="eliminarEstudiante.emit(estudiante.matricula)">
+      <button mat-button color="warn"  (click)="abrirDialogo(estudiante.matricula)">
         <mat-icon>delete</mat-icon>
         Eliminar
       </button>
@@ -52,4 +52,5 @@
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
 </table>

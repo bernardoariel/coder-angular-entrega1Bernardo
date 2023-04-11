@@ -1,7 +1,8 @@
-  import {  Component,  EventEmitter,  Input,  OnInit, Output} from '@angular/core';
-  import { Estudiante } from '../estudiante';
-  import { MatDialog } from '@angular/material/dialog';
-  import { EstudianteComponent } from '../estudiante/estudiante.component';
+import {  Component,  EventEmitter,  Input,  OnInit, Output} from '@angular/core';
+import { Estudiante } from '../estudiante';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { EstudianteComponent } from '../estudiante/estudiante.component';
+import { ConfirmComponent } from 'src/app/modulos/estudiantes/componentes/confirm/confirm.component';
 
 
   @Component({
@@ -35,7 +36,6 @@
     constructor(private matDialog:MatDialog){}
 
     abrirAbmEstudiante(estudiante?:Estudiante ){
-
 
       // this.matDialog.open(EstudianteComponent)
       const dialog = this.matDialog.open(EstudianteComponent, {
@@ -85,6 +85,24 @@
     cargarEstudiantes(){
       console.log('this.estudiantes::: list', this.estudiantes);
       this.dataSource = this.estudiantes.slice();
+
+    }
+    abrirDialogo(matricula:string): void {
+
+      const dialogRef: MatDialogRef<ConfirmComponent> = this.matDialog.open(ConfirmComponent, {
+        width: '500px',
+        data: { mensaje: '¿Desea guardar los cambios?' }
+      });
+
+
+      dialogRef.afterClosed().subscribe(result => {
+
+        if (result) {
+          // El usuario seleccionó "Sí"
+          console.log('result::: ', result);
+           this.eliminarEstudiante.emit(matricula)
+        }
+      });
 
     }
   }
