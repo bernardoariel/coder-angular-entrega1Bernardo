@@ -1,4 +1,4 @@
-import { Component,  OnInit, Input, Inject, EventEmitter } from '@angular/core';
+import { Component,  OnInit, Input, Inject,ChangeDetectionStrategy  } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { formatDate } from '@angular/common';
@@ -6,7 +6,8 @@ import { Estudiante } from '../estudiante';
 @Component({
   selector: 'app-estudiante',
   templateUrl: './estudiante.component.html',
-  styleUrls: ['./estudiante.component.scss']
+  styleUrls: ['./estudiante.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EstudianteComponent implements OnInit{
 
@@ -76,7 +77,7 @@ export class EstudianteComponent implements OnInit{
 
   guardar(){
     if(this.estudianteForm.valid){
-      console.log('this.estudianteForm.value::: ', this.estudianteForm.value);
+      console.log('guardo', this.estudianteForm.value);
       this.dialogRef.close(this.estudianteForm.value)
     }else{
       // mostrar errores de validacion en consola

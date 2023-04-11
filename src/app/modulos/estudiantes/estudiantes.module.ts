@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { GridComponent } from './grid/grid.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DirectivesModule } from 'src/app/shared/directives/directives.module';
 
 
 
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
-    PipesModule
+    PipesModule,
+    DirectivesModule
   ],
   exports:[
     LayoutComponent

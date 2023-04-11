@@ -15,10 +15,11 @@
     @Output() eliminarEstudiante = new EventEmitter<string>();
     @Output() estudiantesActualizados = new EventEmitter<Estudiante[]>();
 
+
     @Input()
     estudiantes: Estudiante[] = [];
 
-    displayedColumns: string[] = ['nombreCompleto', 'fechaNacimiento',  'matricula','fotoPerfilUrl', 'acciones'];
+    displayedColumns: string[] = ['nombreCompleto', 'nombre','apellido', 'fechaNacimiento',  'matricula','fotoPerfilUrl', 'acciones'];
     dataSource: Estudiante[] = [];
 
     datePipe: any;
@@ -29,6 +30,7 @@
       this.cargarEstudiantes();
 
     }
+
 
     constructor(private matDialog:MatDialog){}
 

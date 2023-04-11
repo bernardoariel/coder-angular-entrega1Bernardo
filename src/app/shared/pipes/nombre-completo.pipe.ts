@@ -1,12 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Estudiante } from 'src/app/modulos/estudiantes/estudiante';
+import { LayoutComponent } from 'src/app/modulos/estudiantes/layout/layout.component';
 
 @Pipe({
   name: 'nombreCompleto'
 })
 export class NombreCompletoPipe implements PipeTransform {
 
-  transform(value: Estudiante): string {
+  transform(value: Estudiante, layoutComponent?: LayoutComponent): any {
 
     const {apellido,nombre} = value
     const apellidoMayusculas = apellido.toUpperCase();

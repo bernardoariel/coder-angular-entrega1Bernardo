@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectorRef  } from '@angular/core';
+import { Component, ViewChild,  EventEmitter, Output  } from '@angular/core';
 import { Estudiante } from '../estudiante';
 import { MatDialog } from '@angular/material/dialog';
 import { EstudianteComponent } from '../estudiante/estudiante.component';
@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-
+  @Output() estudiantesActualizados = new EventEmitter<Estudiante[]>();
   @ViewChild(ListComponent) listComponent!: ListComponent;
  /*  estudiante!: Estudiante; */
  estudiantes:Estudiante[] =  [
@@ -67,20 +67,18 @@ export class LayoutComponent {
     fotoUrl: "https://randomuser.me/api/portraits/men/3.jpg"
   }
  ];
- constructor( private matDialog:MatDialog,private datePipe: DatePipe, private cdr: ChangeDetectorRef) { }
+ constructor( private matDialog:MatDialog,private datePipe: DatePipe) { }
 
- onEstudiantesActualizados(estudiantes: Estudiante[]) {
-  // Actualizar arreglo de estudiantes en AppComponent
-  this.estudiantes = estudiantes;
-}
+
   abrirAbmEstudiante(){
     // this.matDialog.open(EstudianteComponent)
     const dialog = this.matDialog.open(EstudianteComponent, {
       width: '600px'
     });
+    dialog.id = 'dialogEstudianteAdd'
 
     dialog.afterClosed().subscribe((valor)=>{
-      console.log('valor::: ', valor);
+      console.log('valor::: ', valor,dialog.id);
       if(!valor) return
 
       const totalAlumnos = this.estudiantes.length + 1
@@ -92,13 +90,9 @@ export class LayoutComponent {
         fotoPerfilUrl:`https://randomuser.me/api/portraits/med/men/${totalAlumnos}.jpg`,
         fotoUrl: `https://randomuser.me/api/portraits/men/${totalAlumnos}.jpg`,
       }
-      console.log('valor::: ', estudianteNuevo);
-      this.estudiantes.unshift(estudianteNuevo)
-      console.log('this.estudiantes::: ', this.estudiantes);
-      this.listComponent.cargarEstudiantes();
-     /*  this.estudianteService.agregarEstudiante(valor)
-      this.listComponent.cargarEstudiantes(); */
 
+      this.estudiantes.push(estudianteNuevo)
+      this.listComponent.dataSource = [...this.estudiantes ]
 
     })
 
@@ -111,13 +105,10 @@ export class LayoutComponent {
     this.listComponent.dataSource = [...this.estudiantes ]
 
   }
-  onActualizarEstudiantes(estudiantes: Estudiante[]): void {
+  onEstudiantesActualizados(estudiantes: Estudiante[]) {
     this.estudiantes = estudiantes;
-
-    // Actualizar listado de estudiantes en ListComponent en el DOM
-    this.listComponent.dataSource = [...this.estudiantes]
-
-
+    console.log('estoy aca', this.estudiantes);
+    this.listComponent.dataSource = [...this.estudiantes ]
   }
 
 }
