@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef  } from '@angular/core';
 import { Estudiante } from '../estudiante';
 import { MatDialog } from '@angular/material/dialog';
 import { EstudianteComponent } from '../estudiante/estudiante.component';
@@ -66,10 +66,13 @@ export class LayoutComponent {
     fotoPerfilUrl: "https://randomuser.me/api/portraits/med/men/6.jpg",
     fotoUrl: "https://randomuser.me/api/portraits/men/3.jpg"
   }
-];
-  constructor( private matDialog:MatDialog,private estudianteService: EstudianteService,private datePipe: DatePipe) { }
+ ];
+ constructor( private matDialog:MatDialog,private datePipe: DatePipe, private cdr: ChangeDetectorRef) { }
 
-
+ onEstudiantesActualizados(estudiantes: Estudiante[]) {
+  // Actualizar arreglo de estudiantes en AppComponent
+  this.estudiantes = estudiantes;
+}
   abrirAbmEstudiante(){
     // this.matDialog.open(EstudianteComponent)
     const dialog = this.matDialog.open(EstudianteComponent, {
@@ -99,8 +102,23 @@ export class LayoutComponent {
 
     })
 
+
   }
 
+  onEliminarEstudiante(id: string) {
+
+    this.estudiantes = this.estudiantes.filter(estudiante => estudiante.matricula !== id)
+    this.listComponent.dataSource = [...this.estudiantes ]
+
+  }
+  onActualizarEstudiantes(estudiantes: Estudiante[]): void {
+    this.estudiantes = estudiantes;
+
+    // Actualizar listado de estudiantes en ListComponent en el DOM
+    this.listComponent.dataSource = [...this.estudiantes]
+
+
+  }
 
 }
 

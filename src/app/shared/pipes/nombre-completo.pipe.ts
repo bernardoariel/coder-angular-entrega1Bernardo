@@ -12,6 +12,7 @@ export class NombreCompletoPipe implements PipeTransform {
     const apellidoMayusculas = apellido.toUpperCase();
     const nombreCapitalizado = nombre.toLowerCase().replace(/^\w/, (c) => c.toUpperCase());
     return `${apellidoMayusculas}, ${nombreCapitalizado}`;
+
   }
 
 }
