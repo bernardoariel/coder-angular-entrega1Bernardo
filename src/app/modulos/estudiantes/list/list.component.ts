@@ -3,6 +3,7 @@ import { Estudiante } from '../estudiante';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EstudianteComponent } from '../estudiante/estudiante.component';
 import { ConfirmComponent } from 'src/app/modulos/estudiantes/componentes/confirm/confirm.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
   @Component({
@@ -28,14 +29,14 @@ import { ConfirmComponent } from 'src/app/modulos/estudiantes/componentes/confir
 
     ngOnInit() {
 
-      this.cargarEstudiantes();
+      this.dataSource = this.estudiantes.slice();
 
     }
 
+    constructor(private matDialog:MatDialog,
+                public snackBar:MatSnackBar){}
 
-    constructor(private matDialog:MatDialog){}
-
-    abrirAbmEstudiante(estudiante?:Estudiante ){
+    openDialogEditEstudiante(estudiante?:Estudiante ){
 
       // this.matDialog.open(EstudianteComponent)
       const dialog = this.matDialog.open(EstudianteComponent, {
@@ -79,23 +80,17 @@ import { ConfirmComponent } from 'src/app/modulos/estudiantes/componentes/confir
 
 
     }
-    public actualizarEstudiantes(estudiantes: Estudiante[]) {
-      this.dataSource = estudiantes;
-    }
 
-    cargarEstudiantes(){
-      console.log('this.estudiantes::: list', this.estudiantes);
-      this.dataSource = this.estudiantes.slice();
-
-    }
-    abrirDialogo(matricula:string): void {
+    openDialogConfirm(matricula:string): void {
 
 
       const estudianteAEliminar = this.estudiantes.find((estudiante) =>estudiante.matricula === matricula);
-      
+
       const dialogRef: MatDialogRef<ConfirmComponent> = this.matDialog.open(ConfirmComponent, {
         width: '500px',
-        data: { mensaje: `¿ Desea eliminar a ${estudianteAEliminar?.apellido.toUpperCase()} ${estudianteAEliminar?.nombre.toUpperCase()} ?` }
+        data: {
+          mensaje: `¿ Desea eliminar a ${ estudianteAEliminar?.apellido.toUpperCase() }
+                     ${estudianteAEliminar?.nombre.toUpperCase()} ?` }
       });
 
 
@@ -103,9 +98,15 @@ import { ConfirmComponent } from 'src/app/modulos/estudiantes/componentes/confir
 
         if (result) {
           // El usuario seleccionó "Sí"
-          console.log('result::: ', result);
            this.eliminarEstudiante.emit(matricula)
+           this.snackBar.open('Estudiante eliminado con exito', '', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            
+          })
         }
+
       });
 
     }

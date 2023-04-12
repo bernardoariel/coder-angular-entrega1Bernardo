@@ -8,7 +8,9 @@ import { ListComponent } from 'src/app/modulos/estudiantes/list/list.component';
   styleUrls: ['./confirm.component.scss']
 })
 export class ConfirmComponent {
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dialogRef:MatDialogRef<ListComponent>) {}
+
   guardar(){
 
    this.dialogRef.close(true)
