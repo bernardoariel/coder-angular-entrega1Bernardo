@@ -4,7 +4,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EstudianteComponent } from '../estudiante/estudiante.component';
 import { ConfirmComponent } from 'src/app/modulos/estudiantes/componentes/confirm/confirm.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { differenceInYears } from 'date-fns';
+import { Curso } from '../curso';
 
   @Component({
     selector: 'app-list',
@@ -20,8 +21,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
     @Input()
     estudiantes: Estudiante[] = [];
+    @Input()
+    cursos: Curso[] = [];
 
-    displayedColumns: string[] = ['nombreCompleto', 'nombre','apellido', 'fechaNacimiento',  'matricula','fotoPerfilUrl', 'acciones'];
+    displayedColumns: string[] = ['matricula','nombreCompleto','fechaNacimiento','fotoPerfilUrl','idCurso','acciones'];
     dataSource: Estudiante[] = [];
 
     datePipe: any;
@@ -32,7 +35,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
       this.dataSource = this.estudiantes.slice();
 
     }
-
+    calcularEdad(fechaNacimiento: string): number {
+      const fechaNacimientoDate = new Date(fechaNacimiento);
+      const hoy = new Date();
+      return differenceInYears(hoy, fechaNacimientoDate);
+    }
     constructor(private matDialog:MatDialog,
                 public snackBar:MatSnackBar){}
 
@@ -49,7 +56,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
         //Actualizar un estudiante cuando el valor.matricula sea igual a this.estudiantes.matricula
         if (valor) {
-          console.log('valor::: ', valor);
+
           // buscar el estudiante en el arreglo que sea igual a valor.matricula
           const estudiante = this.estudiantes.find((estudiante) =>estudiante.matricula === valor.matricula);
           console.log('estudiante::: ', estudiante);
@@ -63,15 +70,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
             estudiante.nombre = valor.nombre;
             estudiante.apellido = valor.apellido;
             estudiante.fechaNacimiento = valor.fechaNacimiento;
-
+            estudiante.idCurso = valor.idCurso;
             // Update de estudiante en el arreglo de estudiantes
             this.estudiantes.unshift(estudiante);
 
             // Emitir evento de estudiantes actualizados
-            this.dataSource = [...this.estudiantes]
-            this.dataSource = this.estudiantes.slice()
-            this.dataSource = this.estudiantes
-            // this.estudiantesActualizados.emit(this.estudiantes);
+            this.estudiantesActualizados.emit(this.estudiantes);
+            this.dataSource = [...this.estudiantes.sort((a, b) => a.matricula.localeCompare(b.matricula))]
+
           }
 
         }
@@ -79,6 +85,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
       })
 
 
+    }
+    getNombreCurso(idCurso: number): string {
+      const cursoEncontrado = this.cursos.find(curso => curso.id === idCurso);
+      return cursoEncontrado ? cursoEncontrado.nombre : 'Curso no encontrado';
     }
 
     openDialogConfirm(matricula:string): void {
@@ -103,7 +113,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
             duration: 3000,
             horizontalPosition: 'center',
             verticalPosition: 'top',
-            
+
           })
         }
 

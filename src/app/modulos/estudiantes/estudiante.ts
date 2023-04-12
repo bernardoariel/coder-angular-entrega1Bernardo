@@ -5,4 +5,5 @@ export interface Estudiante {
   matricula: string;
   fotoPerfilUrl: string;
   fotoUrl: string;
+  idCurso: number;
 }

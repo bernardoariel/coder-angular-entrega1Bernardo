@@ -14,6 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_FORMATS  } from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
 
   exports:[
@@ -32,7 +33,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
 
   ],
   providers: [

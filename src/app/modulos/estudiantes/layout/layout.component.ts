@@ -1,9 +1,11 @@
+
 import { Component, ViewChild,inject  } from '@angular/core';
 import { Estudiante } from '../estudiante';
 import { MatDialog } from '@angular/material/dialog';
 import { EstudianteComponent } from '../estudiante/estudiante.component';
 import { ListComponent } from '../list/list.component';
 import { DatePipe } from '@angular/common';
+import  cursos  from '../datos-curso';
 
 @Component({
   selector: 'app-layout',
@@ -14,7 +16,7 @@ export class LayoutComponent {
 
   // @Output() estudiantesActualizados = new EventEmitter<Estudiante[]>();
   @ViewChild(ListComponent) listComponent!: ListComponent;
-
+  cursos = cursos.cursos;
   estudiantes: Estudiante[] = [
     {
       nombre: 'lucía',
@@ -23,6 +25,7 @@ export class LayoutComponent {
       matricula: '001',
       fotoPerfilUrl: `https://randomuser.me/api/portraits/med/men/1.jpg`,
       fotoUrl: 'https://randomuser.me/api/portraits/men/1.jpg',
+      idCurso:1
     },
     {
       nombre: 'tomás',
@@ -31,6 +34,7 @@ export class LayoutComponent {
       matricula: '002',
       fotoPerfilUrl: 'https://randomuser.me/api/portraits/med/men/2.jpg',
       fotoUrl: 'https://randomuser.me/api/portraits/men/2.jpg',
+      idCurso:3
     },
     {
       nombre: 'sofía',
@@ -39,6 +43,7 @@ export class LayoutComponent {
       matricula: '003',
       fotoPerfilUrl: 'https://randomuser.me/api/portraits/med/men/3.jpg',
       fotoUrl: 'https://randomuser.me/api/portraits/men/3.jpg',
+      idCurso:2
     },
     {
       nombre: 'PeDro',
@@ -47,6 +52,7 @@ export class LayoutComponent {
       matricula: '004',
       fotoPerfilUrl: 'https://randomuser.me/api/portraits/med/men/4.jpg',
       fotoUrl: 'https://randomuser.me/api/portraits/men/4.jpg',
+      idCurso:4
     },
     {
       nombre: 'Ana',
@@ -55,6 +61,7 @@ export class LayoutComponent {
       matricula: '005',
       fotoPerfilUrl: 'https://randomuser.me/api/portraits/med/men/5.jpg',
       fotoUrl: 'https://randomuser.me/api/portraits/men/5.jpg',
+      idCurso:4
     },
 
     {
@@ -64,8 +71,11 @@ export class LayoutComponent {
       matricula: '006',
       fotoPerfilUrl: 'https://randomuser.me/api/portraits/med/men/6.jpg',
       fotoUrl: 'https://randomuser.me/api/portraits/men/3.jpg',
+      idCurso:2
     },
   ];
+
+
   constructor(
     private matDialog: MatDialog,
     private datePipe: DatePipe
@@ -94,7 +104,7 @@ export class LayoutComponent {
       };
 
       this.estudiantes.push(estudianteNuevo);
-      this.listComponent.dataSource = [...this.estudiantes];
+      this.listComponent.dataSource = [...this.estudiantes.sort((a, b) => a.matricula.localeCompare(b.matricula))];
 
     });
 

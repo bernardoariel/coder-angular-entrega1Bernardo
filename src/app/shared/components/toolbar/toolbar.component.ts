@@ -1,6 +1,7 @@
 import { MatDrawer } from '@angular/material/sidenav';
 import { Component, Input,Inject, Output, EventEmitter } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-toolbar',
@@ -13,7 +14,7 @@ export class ToolbarComponent {
   @Input() iconoGirado: boolean = true;
   @Output() girarIcono = new EventEmitter<boolean>();
   isLigthModeActive = true;
-  constructor(@Inject(DOCUMENT) private document:Document) { }
+  constructor(@Inject(DOCUMENT) private document:Document,public snackBar:MatSnackBar) { }
 
   toggleIcono() {
     this.iconoGirado = !this.iconoGirado;
@@ -35,5 +36,13 @@ export class ToolbarComponent {
     }
     console.log('tema::: ', tema);
 
+  }
+  salir(){
+    this.snackBar.open('Saliendo del sistema', 'PROXIMAMENTE', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+
+    });
   }
 }

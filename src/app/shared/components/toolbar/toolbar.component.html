@@ -14,16 +14,16 @@
     </button>
 
   <mat-menu #menu="matMenu">
-    <button mat-menu-item title="Editar mi Perfil">
+    <!-- <button mat-menu-item title="Editar mi Perfil">
       <mat-icon>admin_panel_settings</mat-icon>
       <span>Editar Perfil</span>
-    </button>
+    </button> -->
     <button mat-menu-item title="Cambia los colores de preferencia de tu sistema" (click)="onChangeTheme()">
       <mat-icon>format_paint</mat-icon>
       <span>Editar Preferencias</span>
     </button>
     <mat-divider></mat-divider>
-    <button mat-menu-item title="Salir del sistema">
+    <button mat-menu-item title="Salir del sistema" (click)="salir()">
       <mat-icon>logout</mat-icon>
       <span>Salir</span>
     </button>

@@ -1,8 +1,10 @@
-import { Component,  OnInit, Input, Inject,ChangeDetectionStrategy  } from '@angular/core';
+import { Component,  OnInit, Input, Inject,ChangeDetectionStrategy, ViewChild  } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { formatDate } from '@angular/common';
 import { Estudiante } from '../estudiante';
+import { LayoutComponent } from '../layout/layout.component';
+import  cursos  from '../datos-curso';
 @Component({
   selector: 'app-estudiante',
   templateUrl: './estudiante.component.html',
@@ -12,9 +14,10 @@ import { Estudiante } from '../estudiante';
 export class EstudianteComponent implements OnInit{
 
   @Input() estudiante: Estudiante | undefined;
+  @ViewChild(LayoutComponent) layoutComponent!: LayoutComponent;
   formatDate = formatDate;
   fechaActual: Date = new Date();
-
+  cursos  = cursos.cursos;
   nombreControl = new FormControl('', [
     Validators.required,
     Validators.minLength(3),
@@ -33,6 +36,8 @@ export class EstudianteComponent implements OnInit{
     // Validators.pattern(/^([0-2]\d|3[0-1])\/(0\d|1[0-2])\/\d{4}$/)
   ]);
 
+  cursoControl = new FormControl<number | string>('', [Validators.required]);
+
   matriculaControl = new FormControl('')
   constructor(
     private dialogRef:MatDialogRef<EstudianteComponent>,
@@ -43,7 +48,8 @@ export class EstudianteComponent implements OnInit{
     nombre: this.nombreControl,
     apellido: this.apellidoControl,
     fechaNacimiento: this.fechaNacimientoControl,
-    matricula: this.matriculaControl
+    matricula: this.matriculaControl,
+    idCurso: this.cursoControl
   })
   ngOnInit(): void {
 
@@ -55,10 +61,12 @@ export class EstudianteComponent implements OnInit{
           nombre: estudiante.nombre,
           apellido: estudiante.apellido,
           fechaNacimiento: estudiante.fechaNacimiento,
-          matricula:  estudiante.matricula
+          matricula:  estudiante.matricula,
+          idCurso: estudiante.idCurso
         });
 
         console.log('this.estudianteForm::: ', this.estudianteForm.value);
+
     }
   }
   myFilter = (d: Date | null): boolean => {

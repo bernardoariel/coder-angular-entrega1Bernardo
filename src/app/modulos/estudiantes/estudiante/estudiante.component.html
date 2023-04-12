@@ -52,6 +52,16 @@
           </mat-error>
         </mat-form-field>
       </div>
+      <div class="col-12 mb-1">
+        <mat-form-field>
+          <mat-label>Curso</mat-label>
+          <mat-select [formControl]="cursoControl">
+            <mat-option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nombre }}</mat-option>
+          </mat-select>
+          <!-- <mat-error *ngIf="cursoControl.errors?.required">El curso es requerido</mat-error> -->
+        </mat-form-field>
+      </div>
+
     </div>
 
   </form>
