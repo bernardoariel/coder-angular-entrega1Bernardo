@@ -1,0 +1,8 @@
+<h2 class="mt-5">Listado de Cursos</h2>
+<hr>
+
+<mat-list role="list">
+  
+  <mat-list-item role="listitem" *ngFor="let curso of cursos">{{curso.nombre | uppercase}}</mat-list-item>
+
+</mat-list>

@@ -15,6 +15,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_FORMATS  } from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
 
   exports:[
@@ -34,8 +36,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatNativeDateModule,
     MatCardModule,
     MatSnackBarModule,
-    MatSelectModule
-
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: MAT_DATE_FORMATS, useValue: { parse: { dateInput: 'DD/MM/YYYY' }, display: { dateInput: 'DD/MM/YYYY', monthYearLabel: 'MMM YYYY', dateA11yLabel: 'LL', monthYearA11yLabel: 'MMMM YYYY' } } }

@@ -15,11 +15,30 @@ export class DashboardComponent {
 
   iconoGirado: boolean = false;
   showFiller = false;
+  mostrarMensaje = false;
 
+  estadoEstudiantes: boolean = true;
+  estadoCursos: boolean = false;
 
+  cambiarEstadoEstudiantes() {
+    this.estadoEstudiantes = !this.estadoEstudiantes;
+    console.log('this.estadoEstudiantes::: ', this.estadoEstudiantes);
+    this.cerrarMenu();
+  }
+  cambiarEstadoCursos() {
+    this.estadoCursos = !this.estadoCursos;
+    console.log('this.estadoCursos::: ', this.estadoCursos);
+    this.cerrarMenu();
+  }
   cerrarMenu() {
     this.drawer.close();
     this.toolbar.toggleIcono();
   }
 
+  mostrarMensajeTemporalmente() {
+    setTimeout(() => {
+      this.mostrarMensaje = true;
+      this.estadoEstudiantes = true;
+    }, 5000);
+  }
 }

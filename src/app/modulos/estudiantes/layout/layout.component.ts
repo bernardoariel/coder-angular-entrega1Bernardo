@@ -1,5 +1,5 @@
 
-import { Component, ViewChild,inject  } from '@angular/core';
+import { Component, Input, ViewChild,inject  } from '@angular/core';
 import { Estudiante } from '../estudiante';
 import { MatDialog } from '@angular/material/dialog';
 import { EstudianteComponent } from '../estudiante/estudiante.component';
@@ -14,6 +14,8 @@ import  cursos  from '../datos-curso';
 })
 export class LayoutComponent {
 
+  @Input() estudiantesTabla!:boolean;
+  @Input() cursosTabla!:boolean;
   // @Output() estudiantesActualizados = new EventEmitter<Estudiante[]>();
   @ViewChild(ListComponent) listComponent!: ListComponent;
   cursos = cursos.cursos;
@@ -80,7 +82,10 @@ export class LayoutComponent {
     private matDialog: MatDialog,
     private datePipe: DatePipe
 
-    ) {}
+    ) {
+
+      console.log('estudiantesTabla::: ', this.estudiantesTabla);
+    }
 
   openDialogEditEstudiante() {
     const dialog = this.matDialog.open(EstudianteComponent, {

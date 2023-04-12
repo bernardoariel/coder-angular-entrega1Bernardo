@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
 import { DialogModule } from '@angular/cdk/dialog';
 import { ConfirmComponent } from './componentes/confirm/confirm.component';
+import datosCurso from './datos-curso';
+import { CursosComponent } from './cursos/cursos.component';
 
 
 
@@ -20,7 +22,8 @@ import { ConfirmComponent } from './componentes/confirm/confirm.component';
     ListComponent,
     GridComponent,
     LayoutComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    CursosComponent
 
   ],
   imports: [
@@ -32,7 +35,9 @@ import { ConfirmComponent } from './componentes/confirm/confirm.component';
     DialogModule
   ],
   exports:[
-    LayoutComponent
+    LayoutComponent,
+    CursosComponent
+
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-AR' },DatePipe ],
 })

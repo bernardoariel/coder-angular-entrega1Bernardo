@@ -15,13 +15,13 @@
     </mat-toolbar>
 
     <mat-nav-list>
-      <a (click)="cerrarMenu()" mat-list-item>
+      <a (click)="cambiarEstadoEstudiantes()" mat-list-item>
         <mat-icon mat-list-icon>home</mat-icon>
-        <span>Listado de Clientes</span>
+        <span>Estudiantes</span>
       </a>
-      <a (click)="cerrarMenu()" mat-list-item>
+      <a (click)="cambiarEstadoCursos()" mat-list-item>
         <mat-icon mat-list-icon>home</mat-icon>
-        <span>Listado de Clientes</span>
+        <span>Cursos</span>
       </a>
     </mat-nav-list>
 
@@ -32,7 +32,14 @@
     <!-- Renderizado de las rutas -->
     <main class="container">
 
-      <app-layout></app-layout>
+      <app-layout *ngIf="estadoEstudiantes"></app-layout>
+      <app-cursos *ngIf="estadoCursos"></app-cursos>
+
+      <div *ngIf="!estadoCursos && !estadoEstudiantes">
+        <h3 class="mt-5">No existe nada para mostrar</h3>
+        <h4>Redireccionando <mat-progress-spinner mode="indeterminate"></mat-progress-spinner></h4>
+        {{ mostrarMensajeTemporalmente() }}
+      </div>
 
     </main>
 
