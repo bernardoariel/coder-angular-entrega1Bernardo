@@ -90,9 +90,12 @@ import { ConfirmComponent } from 'src/app/modulos/estudiantes/componentes/confir
     }
     abrirDialogo(matricula:string): void {
 
+
+      const estudianteAEliminar = this.estudiantes.find((estudiante) =>estudiante.matricula === matricula);
+      
       const dialogRef: MatDialogRef<ConfirmComponent> = this.matDialog.open(ConfirmComponent, {
         width: '500px',
-        data: { mensaje: '¿Desea guardar los cambios?' }
+        data: { mensaje: `¿ Desea eliminar a ${estudianteAEliminar?.apellido.toUpperCase()} ${estudianteAEliminar?.nombre.toUpperCase()} ?` }
       });
 
 
