@@ -1,0 +1,19 @@
+.icon-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 24px; /* opcional: ajustar el ancho para que los iconos tengan el mismo tamaño */
+}
+
+.text-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+.example-sidenav {
+  width: 200px; /* Cambia el valor de acuerdo al ancho que necesitas */
+}
+.mat-list-item-content {
+  align-items: center;
+}
