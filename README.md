@@ -24,6 +24,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 13. Se creo el pipe con nombre completo y en el pipe ademas se agrego algunas funciones de js para que el apellido este en mayuscula, y el nombre muestre siempre la primera letra en Mayuscula
 14. Se hicieron las validaciones con el pipe, pasando para el futuro no solo el error si no el campo
 15. Se agrego en el datapicker una funcion de control para poder ingresar solo datos entre 1940 y el dia actual.
+16. En el Menu lateral tiene dos tag a que llaman a una funcion que cambian el valor y muestra la tabla, que se pidio, y un ul que no se pidio respecto a los items de los cursos
+17. En caso de que los dos items esten en falso muestra un mensaje y hace una simulacion de redireccionamiento
+18. tengo aplicado los snackbars, se muestra cuando tocamos salir en la aplicacion
 
 
 
