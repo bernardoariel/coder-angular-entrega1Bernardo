@@ -3,7 +3,8 @@ import { Estudiante } from 'src/app/modulos/estudiantes/estudiante';
 import { LayoutComponent } from 'src/app/modulos/estudiantes/layout/layout.component';
 
 @Pipe({
-  name: 'nombreCompleto'
+  name: 'nombreCompleto',
+  pure: false
 })
 export class NombreCompletoPipe implements PipeTransform {
 
