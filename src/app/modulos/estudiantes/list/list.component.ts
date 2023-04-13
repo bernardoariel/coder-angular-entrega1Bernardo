@@ -29,7 +29,17 @@ import { Curso } from '../curso';
 
     datePipe: any;
     listComponent: any;
+    dataSourceFiltered!: Estudiante[];
 
+    applyFilter(event: Event) {
+      console.log('event::: ', event);
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource = this.estudiantes.filter((estudiante: Estudiante) =>
+  estudiante.nombre.toLowerCase().includes(filterValue) ||
+  estudiante.apellido.toLowerCase().includes(filterValue) ||
+  estudiante.matricula.toLowerCase().includes(filterValue)
+);
+    }
     ngOnInit() {
 
       this.dataSource = this.estudiantes.slice();
