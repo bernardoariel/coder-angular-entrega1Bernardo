@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Time, TimeService } from 'src/app/services/time.service';
 import { Observable } from 'rxjs';
 import { TimeFormatPipe } from 'src/app/shared/pipes/time-format.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -20,7 +21,8 @@ export class ToolbarComponent {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     public snackBar: MatSnackBar,
-    private timeService: TimeService
+    private timeService: TimeService,
+    private router: Router
   ) {
     this.horaActual$ = this.timeService.reloj$;
   }
@@ -45,10 +47,11 @@ export class ToolbarComponent {
     console.log('tema::: ', tema);
   }
   salir() {
-    this.snackBar.open('Saliendo del sistema', 'PROXIMAMENTE', {
+    this.snackBar.open('Saliendo del sistema', 'PROXIMAMENTE!!!', {
       duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });
+    this.router.navigate(['/salir']);
   }
 }
