@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EstudianteComponent } from '../estudiante/estudiante.component';
 import { ListComponent } from '../list/list.component';
 import { DatePipe } from '@angular/common';
-import  cursos  from '../datos-curso';
+import  {cursos}  from '../datos-curso_promise';
 
 @Component({
   selector: 'app-layout',
@@ -18,7 +18,7 @@ export class LayoutComponent {
   @Input() cursosTabla!:boolean;
   // @Output() estudiantesActualizados = new EventEmitter<Estudiante[]>();
   @ViewChild(ListComponent) listComponent!: ListComponent;
-  cursos = cursos.cursos;
+  cursos = cursos;
   estudiantes: Estudiante[] = [
     {
       nombre: 'lucía',

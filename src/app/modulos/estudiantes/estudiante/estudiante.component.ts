@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { formatDate } from '@angular/common';
 import { Estudiante } from '../estudiante';
 import { LayoutComponent } from '../layout/layout.component';
-import  cursos  from '../datos-curso';
+import  {cursos}  from '../datos-curso_promise';
 @Component({
   selector: 'app-estudiante',
   templateUrl: './estudiante.component.html',
@@ -17,7 +17,7 @@ export class EstudianteComponent implements OnInit{
   @ViewChild(LayoutComponent) layoutComponent!: LayoutComponent;
   formatDate = formatDate;
   fechaActual: Date = new Date();
-  cursos  = cursos.cursos;
+  cursos  = cursos;
   nombreControl = new FormControl('', [
     Validators.required,
     Validators.minLength(3),

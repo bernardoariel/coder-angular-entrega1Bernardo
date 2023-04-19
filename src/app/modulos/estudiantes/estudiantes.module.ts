@@ -11,7 +11,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
 import { DialogModule } from '@angular/cdk/dialog';
 import { ConfirmComponent } from './componentes/confirm/confirm.component';
-import datosCurso from './datos-curso';
 import { CursosComponent } from './cursos/cursos.component';
 
 

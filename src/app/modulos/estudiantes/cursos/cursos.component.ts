@@ -1,15 +1,21 @@
-import { Component } from '@angular/core';
-import cursos from '../datos-curso'
+import { Component, OnInit } from '@angular/core';
+import { obtenerCursos } from '../datos-curso_promise'
+import { Curso } from '../curso';
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
   styleUrls: ['./cursos.component.scss']
 })
-export class CursosComponent {
+export class CursosComponent implements OnInit {
 
-  cursos = cursos.cursos;
+  cursos!: Curso[] ;
 
-  constructor() { }
+  ngOnInit(): void {
+    const cursosPromises = obtenerCursos();
+    cursosPromises.then(cursos => {
+      this.cursos = cursos;
+    });
+  }
 
 
 }

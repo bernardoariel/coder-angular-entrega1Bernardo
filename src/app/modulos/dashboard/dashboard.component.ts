@@ -17,8 +17,8 @@ export class DashboardComponent {
   showFiller = false;
   mostrarMensaje = false;
 
-  estadoEstudiantes: boolean = true;
-  estadoCursos: boolean = false;
+  estadoEstudiantes: boolean = false;
+  estadoCursos: boolean = true;
 
   cambiarEstadoEstudiantes() {
     this.estadoEstudiantes = !this.estadoEstudiantes;

@@ -4,7 +4,7 @@ import { DOCUMENT} from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Time, TimeService } from 'src/app/services/time.service';
 import { Observable } from 'rxjs';
-
+import { TimeFormatPipe } from 'src/app/shared/pipes/time-format.pipe';
 
 @Component({
   selector: 'app-toolbar',

@@ -36,8 +36,9 @@
     <!-- Renderizado de las rutas -->
     <main class="container">
 
-      <app-layout *ngIf="estadoEstudiantes"></app-layout>
       <app-cursos *ngIf="estadoCursos"></app-cursos>
+
+      <app-layout *ngIf="estadoEstudiantes"></app-layout>
 
       <div *ngIf="!estadoCursos && !estadoEstudiantes">
         <h3 class="mt-5">No existe nada para mostrar</h3>

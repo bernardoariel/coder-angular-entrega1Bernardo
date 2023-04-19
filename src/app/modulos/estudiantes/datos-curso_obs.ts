@@ -1,3 +1,4 @@
+import { Observable, delay, of } from "rxjs";
 import { Curso } from "./curso";
 
 
@@ -14,4 +15,11 @@ const cursos: Curso[] = [
   { id: 10, nombre: 'Rust' }
 ];
 
-export default { cursos }
+export class CursoService {
+
+  constructor() { }
+
+  getCursos(): Observable<Curso[]> {
+    return of(cursos).pipe(delay(2000));
+  }
+}
