@@ -1,5 +1,6 @@
-import { Observable, delay, of } from "rxjs";
+import { Observable, concatMap, delay, map, of } from "rxjs";
 import { Curso } from "./curso";
+import { Injectable } from "@angular/core";
 
 
 const cursos: Curso[] = [
@@ -15,11 +16,17 @@ const cursos: Curso[] = [
   { id: 10, nombre: 'Rust' }
 ];
 
+@Injectable({
+  providedIn: 'root'
+})
 export class CursoService {
 
   constructor() { }
 
   getCursos(): Observable<Curso[]> {
-    return of(cursos).pipe(delay(2000));
+    return of(cursos).pipe(
+      map((cursos: any[]) => cursos.map(curso => ({...curso, nombre: curso.nombre.toUpperCase()}))),
+      concatMap(c => of(c).pipe(delay(500)))
+    );
   }
 }

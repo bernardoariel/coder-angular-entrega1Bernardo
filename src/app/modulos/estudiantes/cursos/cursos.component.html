@@ -1,8 +1,16 @@
-<h2 class="mt-5">Listado de Cursos</h2>
-<hr>
-
-<mat-list role="list">
-  
-  <mat-list-item role="listitem" *ngFor="let curso of cursos">{{curso.nombre | uppercase}}</mat-list-item>
-
-</mat-list>
+<div class="row">
+  <div class="col-6">
+    <h2 class="mt-5">Listado de Cursos -<small>Promesas</small></h2>
+    <hr>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let curso of cursos">{{curso.nombre | uppercase}}</mat-list-item>
+    </mat-list>
+  </div>
+  <div class="col-6">
+    <h2 class="mt-5">Listado de Cursos - <small>Observable</small></h2>
+    <hr>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let curso of cursosObs">{{curso.nombre}}</mat-list-item>
+    </mat-list>
+  </div>
+</div>
