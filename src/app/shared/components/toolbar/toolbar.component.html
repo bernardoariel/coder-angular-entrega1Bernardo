@@ -8,6 +8,14 @@
 
   <span class="spacer"></span>
 
+
+
+  <p style="display: flex; align-items: center; margin-top: 15px;">
+    <mat-icon style="margin-right: 5px;">access_time</mat-icon>
+    {{ horaActual$ | async   }}
+  </p>
+
+
     <!-- boton de setting -->
     <button mat-icon-button [matMenuTriggerFor]="menu" title="Ingresá a la configuracion" >
       <mat-icon>settings</mat-icon>

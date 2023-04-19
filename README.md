@@ -28,5 +28,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 17. En caso de que los dos items esten en falso muestra un mensaje y hace una simulacion de redireccionamiento
 18. tengo aplicado los snackbars, se muestra cuando tocamos salir en la aplicacion
 
+# Desafio Pipe Async
+1. se agrego un servicio llamado time service donde se utilizo el async para poder hacer un reloj
 
 
