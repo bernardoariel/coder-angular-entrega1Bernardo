@@ -12,6 +12,7 @@ import { DirectivesModule } from 'src/app/shared/directives/directives.module';
 import { DialogModule } from '@angular/cdk/dialog';
 import { ConfirmComponent } from './componentes/confirm/confirm.component';
 import { CursosComponent } from './cursos/cursos.component';
+import { ProfesoresComponent } from './profesores/profesores.component';
 
 
 
@@ -22,7 +23,8 @@ import { CursosComponent } from './cursos/cursos.component';
     GridComponent,
     LayoutComponent,
     ConfirmComponent,
-    CursosComponent
+    CursosComponent,
+    ProfesoresComponent
 
   ],
   imports: [

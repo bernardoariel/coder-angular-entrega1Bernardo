@@ -23,10 +23,21 @@ export class CursoService {
 
   constructor() { }
 
+
   getCursos(): Observable<Curso[]> {
+
     return of(cursos).pipe(
-      map((cursos: any[]) => cursos.map(curso => ({...curso, nombre: curso.nombre.toUpperCase()}))),
-      concatMap(c => of(c).pipe(delay(500)))
+      map(
+        (cursos: any[]) => cursos.map(
+          curso => (
+            {
+              ...curso,
+              nombre: curso.nombre.toUpperCase()
+            }
+          )
+        )
+      )
     );
+    
   }
 }

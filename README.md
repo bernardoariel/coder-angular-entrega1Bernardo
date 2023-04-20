@@ -32,5 +32,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 1. se agrego un servicio llamado time service donde se utilizo el async para poder hacer un reloj
 2. para mejorar el formato he creado un pipe personalizado
 3. La promesa esta en los cursos, inverti la presentacion para este desafio, primero se ven los cursos y luego a pedido los alumnos
+4. en los cursos tengo la opcion con la promesa y la opcion con el observable en el cual utilice un of
+5. declare una ruta para salir y al renderizar ese componente se destruye el observable
+6. Cree una nueva vista (limitadizima en css) que sea de profesores y va a utilizar un un behaiorssubject (por las dudas) con su subscripcion y su destruccion, recien salido del horno
 
 

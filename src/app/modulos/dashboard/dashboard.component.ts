@@ -1,6 +1,7 @@
 import { ToolbarComponent } from './../../shared/components/toolbar/toolbar.component';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class DashboardComponent {
   estadoEstudiantes: boolean = false;
   estadoCursos: boolean = true;
 
+  constructor(private router: Router) { }
   cambiarEstadoEstudiantes() {
     this.estadoEstudiantes = !this.estadoEstudiantes;
     console.log('this.estadoEstudiantes::: ', this.estadoEstudiantes);
@@ -34,7 +36,9 @@ export class DashboardComponent {
     this.drawer.close();
     this.toolbar.toggleIcono();
   }
-
+  irAProfesores(){
+    this.router.navigate(['profesores']);
+  }
   mostrarMensajeTemporalmente() {
     setTimeout(() => {
       this.mostrarMensaje = true;
